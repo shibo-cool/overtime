@@ -18,4 +18,6 @@
     <string name="all">全选</string>
     <string name="noApproval">没有审批的内容哦！</string>
 
+    <string name="my">我的</string>
+
 </resources>
