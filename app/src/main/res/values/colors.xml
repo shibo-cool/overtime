@@ -10,4 +10,7 @@
     <color name="main_color">#fffeea0c</color>
     <color name="color_gray">#f6f6f6</color>
     <color name="color_dadada">#dadada</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="color_6a3906">#6a3906</color>
+    <color name="color_yellow">#feea0c</color>
 </resources>

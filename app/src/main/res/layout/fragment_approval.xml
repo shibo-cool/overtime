@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#fff6f6f6" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="@string/approval"
+        android:background="@color/main_color"
+        android:gravity="center"
+        style="@style/text_style_16_6a3906"/>
+
+    <RelativeLayout
+        android:id="@+id/rltContent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:layout_below="@id/title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/rltBot" />
+
+        <RelativeLayout
+            android:id="@+id/rltBot"
+            android:background="#fffcfcfc"
+            android:layout_width="fill_parent"
+            android:layout_height="46.0dip"
+            android:layout_alignParentBottom="true">
+
+            <CheckBox
+                android:textSize="20.0dip"
+                android:textColor="#ff6a3906"
+                android:id="@+id/rbAll"
+                android:paddingLeft="6.0dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:button="@drawable/rb_bg"
+                android:text="@string/all"
+                android:layout_centerVertical="true" />
+
+            <Button
+                android:textSize="14.0dip"
+                android:textColor="#ff6a3906"
+                android:id="@+id/btn1"
+                android:background="@drawable/btn_1"
+                android:layout_width="91.0dip"
+                android:layout_height="35.0dip"
+                android:layout_marginRight="20.0dip"
+                android:text="@string/notAgree"
+                android:layout_toLeftOf="@+id/btn2"
+                android:layout_centerVertical="true" />
+
+            <Button
+                android:textSize="14.0dip"
+                android:textColor="#ff6a3906"
+                android:id="@id/btn2"
+                android:background="@drawable/btn_2"
+                android:layout_width="91.0dip"
+                android:layout_height="35.0dip"
+                android:layout_marginRight="20.0dip"
+                android:text="@string/agree"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltNoData"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/title">
+
+        <TextView
+            android:textSize="14.0dip"
+            android:textColor="#ff999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/noApproval"
+            android:drawableTop="@drawable/icon_illustration"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

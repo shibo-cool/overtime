@@ -1,7 +1,10 @@
-package com.shibo.overtime
+package com.shibo.overtime.launcher
 
 import android.content.Intent
 import android.os.Handler
+import com.shibo.overtime.R
+import com.shibo.overtime.base.BaseActivity
+import com.shibo.overtime.login.LoginActivity
 
 /**
  * 载入界面
@@ -26,8 +29,7 @@ class LauncherActivity: BaseActivity() {
     override fun setListener() {
         handler?.postDelayed({
 
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            LoginActivity.start(this@LauncherActivity)
             finish()
 
         }, 1500)

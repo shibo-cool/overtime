@@ -1,7 +1,12 @@
-package com.shibo.overtime
+package com.shibo.overtime.login
 
+import android.content.Context
+import android.content.Intent
 import android.widget.EditText
 import android.widget.TextView
+import com.shibo.overtime.R
+import com.shibo.overtime.base.BaseActivity
+import com.shibo.overtime.main.MainActivity
 
 /**
  * 登录页
@@ -9,6 +14,16 @@ import android.widget.TextView
  * @date 2022/4/26
  */
 class LoginActivity : BaseActivity() {
+
+    companion object{
+
+        @JvmStatic
+        fun start(context: Context){
+            val intent = Intent(context, LoginActivity::class.java)
+            context.startActivity(intent)
+        }
+
+    }
 
     /**
      * 帐号输入框
@@ -36,11 +51,17 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+
     }
 
     override fun setListener() {
-        TODO("Not yet implemented")
+
+        // 点击登录按钮
+        mBtnLogin?.setOnClickListener {
+
+            MainActivity.start(this@LoginActivity)
+
+        }
     }
 
 

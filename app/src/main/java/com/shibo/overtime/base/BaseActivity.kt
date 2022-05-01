@@ -1,9 +1,10 @@
-package com.shibo.overtime
+package com.shibo.overtime.base
 
 import android.os.Bundle
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity: AppCompatActivity(), ContentView, InitView, InitData, SetListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,9 +13,4 @@ abstract class BaseActivity : AppCompatActivity() {
         initData()
         setListener()
     }
-
-    abstract fun getContentView():Int
-    abstract fun initView()
-    abstract fun initData()
-    abstract fun setListener()
 }

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="@string/clock"
+        android:background="@color/main_color"
+        android:gravity="center"
+        style="@style/text_style_16_6a3906"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2022-04-29"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_14"
+        style="@style/text_style_14_323232"/>
+
+    <TextView
+        style="@style/text_style_12_323232"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="加班时长"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_10">
+
+        <Chronometer
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#323232"
+            android:textSize="50dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/tv_time_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#323232"
+            android:text="00:00:00"
+            android:textSize="50dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/text_style_17_323232"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/approvalPerson"
+            android:gravity="center|top"/>
+
+        <TextView
+            android:id="@+id/tv_approver"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            style="@style/text_style_17_323232"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:gravity="right"
+            android:text="钟世博"
+            android:layout_marginRight="@dimen/dp_20"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_marginTop="@dimen/dp_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.15"
+                style="@style/text_style_17_323232"
+                android:text="@string/reason"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:gravity="top|center"/>
+
+            <TextView
+                android:id="@+id/reason_count"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                style="@style/text_style_15_323232"
+                android:text="0"
+                android:gravity="right|center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                style="@style/text_style_17_323232"
+                android:text="/200"
+                android:gravity="left|center"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150">
+
+            <EditText
+                android:id="@+id/reason"
+                style="@style/text_style_17_323232"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                android:background="#fafafa"
+                android:gravity="top"
+                android:hint="@string/enter_reason"
+                android:maxLength="200"
+                android:padding="@dimen/dp_10"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        style="@style/text_style_19_323232"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_oval"
+        android:textColor="@color/color_6a3906"
+        android:text="@string/overtime_start" />
+
+</LinearLayout>

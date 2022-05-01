@@ -3,4 +3,19 @@
     <string name="enter_name">请输入用户名</string>
     <string name="enter_password">请输入密码</string>
     <string name="login">登录</string>
+    <string name="clock">打卡</string>
+    <string name="approvalPerson">审批人</string>
+    <string name="reason">加班理由</string>
+    <string name="enter_reason">请输入加班理由</string>
+    <string name="overtime_start">开始加班</string>
+
+    <string name="notes">记录</string>
+    <string name="overNotes">加班明细</string>
+
+    <string name="approval">审批</string>
+    <string name="agree">同意</string>
+    <string name="notAgree">拒绝</string>
+    <string name="all">全选</string>
+    <string name="noApproval">没有审批的内容哦！</string>
+
 </resources>

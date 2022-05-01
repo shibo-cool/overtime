@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="@string/notes"
+        android:background="@color/main_color"
+        android:gravity="center"
+        style="@style/text_style_16_6a3906"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:background="@color/color_yellow">
+
+
+        <LinearLayout
+            android:id="@+id/linear_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/text_style_35_fe473c"
+                android:id="@+id/tv_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                />
+
+
+            <TextView
+                style="@style/text_style_16_fe473c"
+                android:id="@+id/tv_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时"
+                />
+
+
+            <TextView
+                style="@style/text_style_35_fe473c"
+                android:id="@+id/tv_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                />
+
+
+            <TextView
+                style="@style/text_style_16_fe473c"
+                android:id="@+id/tv_title4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_detail"
+            android:layout_below="@+id/linear_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/text_style_14_323232"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear_top"
+                    android:text="加班总时间"/>
+
+                <TextView
+                    android:id="@+id/tv_jb_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear_top"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:textSize="20dp"
+                    android:textColor="@color/color_6a3906"
+                    android:text="00时00分"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/text_style_14_323232"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear_top"
+                    android:text="调休总时间"/>
+                <TextView
+                    android:id="@+id/tv_tx_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linear_top"
+                    android:textSize="20dp"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:textColor="@color/color_6a3906"
+                    android:text="00时00分"
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        android:src="@drawable/test"/>
+
+    <TextView
+        style="@style/text_style_14_323232"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="@string/overNotes"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

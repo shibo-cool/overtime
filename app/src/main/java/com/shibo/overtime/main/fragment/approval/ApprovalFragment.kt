@@ -1,12 +1,12 @@
-package com.shibo.overtime
+package com.shibo.overtime.main.fragment.approval
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.shibo.overtime.R
+import com.shibo.overtime.base.BaseFragment
 
-class MainActivity : BaseActivity() {
+class ApprovalFragment: BaseFragment() {
 
     override fun getContentView(): Int {
-        return R.layout.activity_main
+        return R.layout.fragment_approval
     }
 
     override fun initView() {

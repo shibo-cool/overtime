@@ -38,4 +38,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
+    implementation files('libs/okhttp-3.10.0.jar')
+    implementation files('libs/okio-1.14.0.jar')
 }
