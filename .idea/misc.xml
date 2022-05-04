@@ -5,12 +5,17 @@
       <map>
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn1.xml" value="0.1155" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_2.xml" value="0.1155" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_6a3906.xml" value="0.112" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_gray.xml" value="0.1" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_oval.xml" value="0.1155" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_oval_oval.xml" value="0.112" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_white.xml" value="0.112" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_yellow.xml" value="0.112" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/rb_bg.xml" value="0.1155" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_launcher.xml" value="0.11" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_main.xml" value="0.13632246376811594" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/dialog_sure_and_cancle.xml" value="0.1286231884057971" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_approval.xml" value="0.13632246376811594" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_clock.xml" value="0.165" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_my.xml" value="0.25" />

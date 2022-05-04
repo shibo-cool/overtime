@@ -1,5 +1,6 @@
 package com.shibo.overtime.main.fragment.approval
 
+import android.view.View
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseFragment
 
@@ -9,7 +10,7 @@ class ApprovalFragment: BaseFragment() {
         return R.layout.fragment_approval
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
         TODO("Not yet implemented")
     }
 

@@ -13,6 +13,7 @@
         style="@style/text_style_16_6a3906"/>
 
     <TextView
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2022-04-29"
@@ -150,7 +151,7 @@
         android:id="@+id/btn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        style="@style/text_style_19_323232"
+        style="@style/text_style_14_323232"
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:layout_gravity="center"

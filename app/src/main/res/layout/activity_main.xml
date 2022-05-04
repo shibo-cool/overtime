@@ -17,12 +17,11 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_44"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_alignParentBottom="true"
         app:tabIndicatorHeight="0dp"
-        app:tabMaxWidth="0dp"
         app:tabMode="fixed"
-        app:tabGravity="fill"/>
+        app:tabGravity="center"/>
 
 </RelativeLayout>

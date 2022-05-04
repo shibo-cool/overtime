@@ -5,9 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseActivity
 import com.shibo.overtime.main.adapter.FragmentAdapter
@@ -27,7 +25,6 @@ class MainActivity : BaseActivity() {
 
     private var mTab: TabLayout? = null
     private var mViewPager: CustomerViewPager? = null
-
     private var mAdapter: FragmentAdapter? = null
 
     /**
@@ -106,9 +103,7 @@ class MainActivity : BaseActivity() {
         if(position == 0){
             imageView.setImageResource(tabSelected[position])
         }
-
         return tabView;
     }
-
 
 }

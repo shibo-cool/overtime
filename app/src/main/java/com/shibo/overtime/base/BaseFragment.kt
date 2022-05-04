@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.shibo.overtime.R
 
-abstract class BaseFragment: Fragment(), ContentView, InitView, InitData, SetListener {
+abstract class BaseFragment: Fragment(), ContentView, FragmentInitView, InitData, SetListener {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,8 +14,14 @@ abstract class BaseFragment: Fragment(), ContentView, InitView, InitData, SetLis
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(getContentView(), container, false)
-        initView()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(view)
         initData()
         setListener()
     }
+
+
 }

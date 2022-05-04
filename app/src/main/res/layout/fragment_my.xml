@@ -33,8 +33,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@null"
-                android:src="@mipmap/icon_xiaotian"
-                app:placeholderImage="@mipmap/icon_xiaotian" />
+                android:src="@mipmap/icon_xiaotian"/>
 
 
             <TextView
