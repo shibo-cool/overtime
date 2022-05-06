@@ -5,15 +5,15 @@ package com.shibo.overtime.base
  * @author shibo
  * @date 2022/4/26
  */
-interface BaseModelListener<T, E> {
+interface BaseModelListener<E:BaseEntity> {
 
     /**
      * 请求成功
      */
-    fun onSuccess(request: T, response: E)
+    fun onSuccess(response: E)
 
     /**
      * 请求失败
      */
-    fun onFailure(request: T, message: String)
+    fun onFailure(message: String)
 }

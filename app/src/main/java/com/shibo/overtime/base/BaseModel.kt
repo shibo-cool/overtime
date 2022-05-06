@@ -12,27 +12,27 @@ import java.io.IOException
  */
 abstract class BaseModel<T: BaseEntity> {
 
-    /**
-     * 接口数据返回监听器
-     */
-//    var mListener: BaseModelListener<BaseModel, T>? = null
+    private var mListener: BaseModelListener<T>? = null
 
-    var mContext: Context? = null
+    private var mContext: Context? = null
 
-    var okHttpClient = OkHttpClient()
+    private var okHttpClient = OkHttpClient.getInstance()
 
     /**
      * 创建表单请求参数
      */
-    var builder: FormBody.Builder? = FormBody.Builder()
+    private var builder: FormBody.Builder? = FormBody.Builder()
 
-    var body: FormBody? = builder?.build()
+    private var body: FormBody? = builder?.build()
 
-//    constructor(context: Context, listener: BaseModelListener<BaseModel, T>){
-//        mContext = context
-//        mListener = listener
-//    }
+    constructor(context: Context){
+        mContext = context
 
+    }
+
+    open fun setListener(listener: BaseModelListener<T>) {
+        mListener = listener
+    }
     /**
      * 批量添加请求参数
      *
@@ -58,36 +58,23 @@ abstract class BaseModel<T: BaseEntity> {
      * 开启新线程请求接口
      */
     fun start(){
-        /**
-         * 因为本项目需要连接公司内网才能正常使用，所以未连接wifi的一律pass
-         */
-        if(isWifiConnected(mContext)) {
-            val request = Request.Builder()
-                .url(getAddress() + getUrl())
-                .post(body)
-                .build()
-            Thread(Runnable {
-                try {
-                    okHttpClient.newCall(request)?.enqueue(object : Callback {
-                        override fun onFailure(p0: Call, p1: IOException) {
-//                            mListener?.onFailure(this@BaseModel, "接口请求失败")
-                        }
+        val request = Request.Builder()
+            .url(getAddress() + getUrl())
+            .post(body)
+            .build()
+        okHttpClient?.newCall(request)?.enqueue(object : Callback {
+            override fun onFailure(p0: Call, p1: IOException) {
+                mListener?.onFailure("接口请求失败")
+            }
 
-                        override fun onResponse(p0: Call, p1: Response) {
-                            val entity = createInstance(getClazz())
-                            if (entity != null) {
-//                                mListener?.onSuccess(this@BaseModel, entity)
-                            }
-                        }
-
-                    })
-                } catch (e: Exception) {
-                    e.printStackTrace()
+            override fun onResponse(p0: Call, p1: Response) {
+                val entity = createInstance(getClazz())
+                if (entity != null) {
+                    mListener?.onSuccess(entity)
                 }
-            }).start()
-        } else {
-//            mListener?.onFailure(this@BaseModel, "请连接公司wifi")
-        }
+            }
+
+        })
     }
 
     protected open fun <E> createInstance(cls: Class<E>): E? {

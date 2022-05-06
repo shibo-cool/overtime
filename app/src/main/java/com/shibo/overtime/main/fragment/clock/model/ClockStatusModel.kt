@@ -8,22 +8,24 @@ import com.shibo.overtime.main.fragment.clock.model.entity.ClockStatusEntity
 
 /**
  * @author shibo
- * @date 2022/5/4
- * 获取当前加班状态和数据
+ * @date 2022/5/6
+ *
  */
-class ClockModel: BaseModel<ClockStatusEntity> {
+class ClockStatusModel: BaseModel<ClockStatusEntity> {
 
-    constructor(context: Context, flag: String, reason: String, listener: BaseModelListener<ClockStatusEntity>) :super(context) {
+    constructor(context: Context ,id: String, token: String, listener: BaseModelListener<ClockStatusEntity>) : super(context){
         setListener(listener);
-        addParam("flag", flag)
-        addParam("reason", reason)
+        addParam("id", id)
+        addParam("token", token)
     }
 
     override fun getUrl(): String {
-        return Constants.URL_ADD_RECORD
+        return Constants.URL_STATUS
     }
 
     override fun getClazz(): Class<ClockStatusEntity> {
         return ClockStatusEntity::class.java
     }
+
+
 }

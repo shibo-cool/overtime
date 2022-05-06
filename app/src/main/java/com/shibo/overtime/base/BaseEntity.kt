@@ -18,4 +18,14 @@ open class BaseEntity: Serializable {
      * 请求的时间戳
      */
     var timestamp: String? = null
+
+    /**
+     * 同message
+     */
+    var info: String? = null
+
+    /**
+     * 同code
+     */
+    var status: String? = null
 }

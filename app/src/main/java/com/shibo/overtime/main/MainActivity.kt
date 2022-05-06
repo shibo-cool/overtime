@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import com.google.android.material.tabs.TabLayout
 import com.shibo.overtime.R
@@ -51,6 +52,9 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
+        val lp = mTab?.getChildAt(0)?.layoutParams;
+        lp?.width = ViewGroup.LayoutParams.MATCH_PARENT
+        mTab?.getChildAt(0)?.layoutParams = lp;
         mTab?.setupWithViewPager(mViewPager)
         mAdapter = FragmentAdapter(supportFragmentManager)
         mViewPager?.adapter = mAdapter
@@ -62,13 +66,13 @@ class MainActivity : BaseActivity() {
     override fun setListener() {
         mTab?.setOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val image = tab?.customView?.findViewById<ImageView>(R.id.tab)
+                val image = tab?.customView?.findViewById<ImageView>(R.id.iv_tab)
                 val position = tab?.customView?.tag
                 image?.setImageResource(tabSelected[position as Int])
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                val image = tab?.customView?.findViewById<ImageView>(R.id.tab)
+                val image = tab?.customView?.findViewById<ImageView>(R.id.iv_tab)
                 val position = tab?.customView?.tag
                 image?.setImageResource(tabUnSelected[position as Int])
             }
@@ -85,8 +89,14 @@ class MainActivity : BaseActivity() {
      */
     private fun setCustomIcon() {
         for (i in 0 until 4){
-            mTab?.addTab(mTab?.newTab()!!)
+            var tab:TabLayout.Tab = mTab?.newTab()!!
             mTab?.getTabAt(i)?.customView = makeTabView(i)
+//            if(tab.view.layoutParams is LinearLayout.LayoutParams){
+//                (tab.view.layoutParams as LinearLayout.LayoutParams).width = 0;
+//                (tab.view.layoutParams as LinearLayout.LayoutParams).weight = 1.0f;
+//            }
+            mTab?.addTab(tab)
+
         }
     }
 
@@ -97,7 +107,7 @@ class MainActivity : BaseActivity() {
      */
     private fun makeTabView(position: Int): View {
         val tabView = LayoutInflater.from(this).inflate(R.layout.tab_main,null)
-        val imageView = tabView.findViewById<ImageView>(R.id.tab)
+        val imageView = tabView.findViewById<ImageView>(R.id.iv_tab)
         tabView.tag = position
         imageView.setImageResource(tabUnSelected[position])
         if(position == 0){

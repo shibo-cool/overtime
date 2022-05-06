@@ -13,8 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseFragment
-import com.shibo.overtime.main.fragment.clock.model.ClockModel
-import com.shibo.overtime.main.fragment.clock.model.entity.ClockModelEntity
+import com.shibo.overtime.main.fragment.clock.model.entity.ClockStatusEntity
 import com.shibo.overtime.main.fragment.clock.presenter.ClockPresenter
 import com.shibo.overtime.main.fragment.clock.view.ClockView
 import com.shibo.overtime.widget.SureAndCancelDialog
@@ -74,7 +73,7 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
     }
 
     override fun initData() {
-        mPresenter = ClockPresenter(activity as Context)
+        mPresenter = ClockPresenter(activity as Context, this)
         getClockRequest()
     }
 
@@ -127,19 +126,19 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
      * 更新加班状态
      */
     private fun getClockRequest() {
-//        mPresenter?.requestGetClock(mTvBtnClock?.tag.toString(), )
+        mPresenter?.requestGetClock(mTvBtnClock?.tag.toString(), mTvReason?.text.toString())
     }
 
     /**
      * 接口返回加班状态成功回调
      */
-    override fun clockSuccess(request: ClockModel, response: ClockModelEntity) {
+    override fun clockSuccess(response: ClockStatusEntity) {
         if(response.code == 200){
             if(response.data != null){
                 setBtnChangeColor(response.data?.approver?:"")
                 mTvApproval?.text = response.data?.approver?:""
                 mTvDate?.text = response.data?.date
-                if(1 == response.data?.flag){
+                if("1".equals(response.data?.flag, false)){
                     // 未加班状态
                     mTvBtnClock?.tag = 1
                     mTvBtnClock?.text = "开始加班"
@@ -152,7 +151,7 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
                     mTvBtnClock?.tag = 2
                     mTvBtnClock?.text = "结束加班"
                     mTvReason?.isEnabled = false
-                    countTime(response.data?.startTime?:0L, response.data?.nowTime?:0L)
+                    countTime(response.data?.startTime?.toLong()?:0L, response.data?.nowTime?.toLong()?:0L)
                     mTvReasonNum?.text = response.data?.reason?.length.toString()
                     mTvReason?.setText(response.data?.reason)
                 }
@@ -195,7 +194,7 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
     /**
      * 接口返回加班状态失败回调
      */
-    override fun clockFailure(request: ClockModel, message: String) {
+    override fun clockFailure(message: String) {
 
     }
 

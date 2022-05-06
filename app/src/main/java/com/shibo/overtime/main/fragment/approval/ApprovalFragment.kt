@@ -11,14 +11,14 @@ class ApprovalFragment: BaseFragment() {
     }
 
     override fun initView(view: View) {
-        TODO("Not yet implemented")
+
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+
     }
 
     override fun setListener() {
-        TODO("Not yet implemented")
+
     }
 }

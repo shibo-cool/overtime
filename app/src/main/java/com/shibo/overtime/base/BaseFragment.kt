@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment: Fragment(), ContentView, FragmentInitView, InitData, SetListener {
+abstract class BaseFragment: Fragment(), FragmentInitView {
 
     override fun onCreateView(
         inflater: LayoutInflater,

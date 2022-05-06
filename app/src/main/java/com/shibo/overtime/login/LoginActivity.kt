@@ -6,6 +6,9 @@ import android.widget.EditText
 import android.widget.TextView
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseActivity
+import com.shibo.overtime.login.model.entity.LoginEntity
+import com.shibo.overtime.login.presenter.LoginPresenter
+import com.shibo.overtime.login.view.LoginView
 import com.shibo.overtime.main.MainActivity
 
 /**
@@ -13,7 +16,7 @@ import com.shibo.overtime.main.MainActivity
  * @author shibo
  * @date 2022/4/26
  */
-class LoginActivity : BaseActivity() {
+class LoginActivity : BaseActivity(), LoginView {
 
     companion object{
 
@@ -28,17 +31,19 @@ class LoginActivity : BaseActivity() {
     /**
      * 帐号输入框
      */
-    var mEtUser: EditText? = null
+    private var mEtUser: EditText? = null
 
     /**
      * 密码输入框
      */
-    var mEtPassword: EditText? = null
+    private var mEtPassword: EditText? = null
 
     /**
      * 登录按钮
      */
-    var mBtnLogin: TextView? = null
+    private var mBtnLogin: TextView? = null
+
+    var mPresenter: LoginPresenter? = null
 
     override fun getContentView(): Int {
         return R.layout.activity_login
@@ -51,7 +56,11 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initData() {
-
+        mPresenter = LoginPresenter(this, this)
+        // 若已保存了帐号和Token，则不需要登录直接进入主页面
+        if(mPresenter?.isNeedLogin() == false){
+            MainActivity.start(this@LoginActivity)
+        }
     }
 
     override fun setListener() {
@@ -59,9 +68,17 @@ class LoginActivity : BaseActivity() {
         // 点击登录按钮
         mBtnLogin?.setOnClickListener {
 
-            MainActivity.start(this@LoginActivity)
+            mPresenter?.requestLogin(mEtUser?.text.toString(), mEtPassword?.text.toString())
 
         }
+    }
+
+    override fun loginSuccess(response: LoginEntity) {
+        MainActivity.start(this@LoginActivity)
+    }
+
+    override fun loginFailure(message: String) {
+
     }
 
 
