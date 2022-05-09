@@ -7,7 +7,7 @@ package com.shibo.overtime.base
  */
 open class BasePresenter {
 
-  fun isSuccess(response: BaseEntity): Boolean{
-    return "200".equals(response.status,false) || 200 == response.code
-  }
+    fun isSuccess(response: BaseEntity): Boolean{
+        return "200".equals(response.status,false) && 200 == response.code
+    }
 }

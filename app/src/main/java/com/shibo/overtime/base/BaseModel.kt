@@ -2,8 +2,10 @@ package com.shibo.overtime.base
 
 import android.content.Context
 import android.net.ConnectivityManager
+import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
+
 
 /**
  * 请求接口基类
@@ -68,13 +70,30 @@ abstract class BaseModel<T: BaseEntity> {
             }
 
             override fun onResponse(p0: Call, p1: Response) {
-                val entity = createInstance(getClazz())
+//                val entity = createInstance(getClazz())
+                val entity: T? = jsonToBean(p1.body()!!, getClazz())
                 if (entity != null) {
+//                    entity = JSON.parseObject(p1.body()?.string())
                     mListener?.onSuccess(entity)
                 }
             }
 
         })
+    }
+
+    /**
+     * 将返回的ResponseBody转为实体类
+     */
+    private fun jsonToBean(body: ResponseBody, clazz: Class<T>?): T? {
+        var obj: T? = null
+        val a = body.string()
+        val gson = Gson()
+        try {
+            obj = gson.fromJson(a, clazz)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return obj
     }
 
     protected open fun <E> createInstance(cls: Class<E>): E? {

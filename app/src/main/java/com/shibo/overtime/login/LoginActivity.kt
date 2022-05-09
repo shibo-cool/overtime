@@ -53,6 +53,9 @@ class LoginActivity : BaseActivity(), LoginView {
         mEtUser = findViewById(R.id.et_user)
         mEtPassword = findViewById(R.id.et_password)
         mBtnLogin = findViewById(R.id.btn_login)
+        mEtUser?.setText("129871")
+        mEtPassword?.setText("123456")
+
     }
 
     override fun initData() {
