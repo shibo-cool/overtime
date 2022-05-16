@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:gravity="center">
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@style/mProgress_circle"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:indeterminateDuration="1200"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

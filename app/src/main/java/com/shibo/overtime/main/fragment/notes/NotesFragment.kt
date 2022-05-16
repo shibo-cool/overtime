@@ -8,17 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseFragment
+import com.shibo.overtime.base.ShowLoadingListener
 import com.shibo.overtime.main.fragment.notes.adapter.NotesAdapter
 import com.shibo.overtime.main.fragment.notes.model.entity.NotesModelEntity
 import com.shibo.overtime.main.fragment.notes.presenter.NotesPresenter
 import com.shibo.overtime.main.fragment.notes.view.NotesView
+import com.shibo.overtime.widget.MyToast
 
 /**
  * @author shibo
  * @date 2022/5/10
  * 加班记录页
  */
-class NotesFragment: BaseFragment(), NotesView {
+class NotesFragment: BaseFragment, NotesView {
 
     /**
      * 剩余时间（时）
@@ -58,6 +60,8 @@ class NotesFragment: BaseFragment(), NotesView {
      */
     private var mPage: Int = 0
 
+    constructor(listener: ShowLoadingListener):super(listener)
+
     override fun getContentView(): Int {
         return R.layout.fragment_notes
     }
@@ -75,12 +79,15 @@ class NotesFragment: BaseFragment(), NotesView {
         mAdapter = NotesAdapter(activity as Context)
         mRvNotes?.layoutManager = LinearLayoutManager(activity as Context)
         mRvNotes?.adapter = mAdapter
-        mPresenter = NotesPresenter(activity as Context, this)
-        mPresenter?.requestNotes(mPage, mAdapter)
+        mPresenter = NotesPresenter(activity as Context, this, mAdapter)
+        mPresenter?.requestNotes(mPage)
     }
 
     override fun setListener() {
-
+        mSrlRefresh?.setOnRefreshListener {
+            mPage = 0
+            mPresenter?.requestNotes(mPage)
+        }
     }
 
     /**
@@ -101,6 +108,6 @@ class NotesFragment: BaseFragment(), NotesView {
      * 加班记录接口请求失败回调
      */
     override fun notesFailure(message: String) {
-
+        MyToast.showToast(activity as Context, message)
     }
 }

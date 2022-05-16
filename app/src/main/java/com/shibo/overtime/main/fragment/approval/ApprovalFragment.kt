@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseFragment
+import com.shibo.overtime.base.ShowLoadingListener
 import com.shibo.overtime.main.approvalNote.ApprovalNoteActivity
 import com.shibo.overtime.main.fragment.approval.adapter.ApprovalAdapter
 import com.shibo.overtime.main.fragment.approval.model.entity.AgreeModelEntity
@@ -16,7 +17,7 @@ import com.shibo.overtime.main.fragment.approval.presenter.ApprovalPresenter
 import com.shibo.overtime.main.fragment.approval.view.ApprovalView
 import com.shibo.overtime.widget.MyToast
 
-class ApprovalFragment: BaseFragment(), ApprovalView {
+class ApprovalFragment: BaseFragment, ApprovalView {
 
     /**
      * 审批记录按钮
@@ -68,6 +69,8 @@ class ApprovalFragment: BaseFragment(), ApprovalView {
         const val refuse = "3"
     }
 
+    constructor(listener: ShowLoadingListener):super(listener)
+
     override fun getContentView(): Int {
         return R.layout.fragment_approval
     }
@@ -94,6 +97,7 @@ class ApprovalFragment: BaseFragment(), ApprovalView {
         mRcv?.adapter = mAdapter
         mRcv?.layoutManager = LinearLayoutManager(activity as Context)
         mRltNoData?.visibility = View.VISIBLE
+        mListener?.showLoadings(true)
         mPresenter?.requestApproval(mPage)
     }
 
@@ -130,10 +134,12 @@ class ApprovalFragment: BaseFragment(), ApprovalView {
             MyToast.showToast(activity as Context, "请选择加班项")
             return
         }
+        mListener?.showLoadings(true)
         mPresenter?.requestAgree(agree, ids)
     }
 
     override fun approvalSuccess(response: ApprovalModelEntity) {
+        mListener?.showLoadings(false)
         if(mPage == 0) {
             if (response.data?.approveList != null && response.data?.approveList?.size != 0) {
                 mAdapter?.setData(response.data?.approveList)
@@ -157,15 +163,18 @@ class ApprovalFragment: BaseFragment(), ApprovalView {
     }
 
     override fun approvalFailure(message: String) {
+        mListener?.showLoadings(false)
         mRltNoData?.visibility = View.VISIBLE
     }
 
     override fun agreeSuccess(response: AgreeModelEntity) {
+        mListener?.showLoadings(false)
         mPage = 0
         mPresenter?.requestApproval(mPage)
     }
 
     override fun agreeFailure(message: String) {
+        mListener?.showLoadings(false)
         MyToast.showToast(activity as Context, message)
     }
 }

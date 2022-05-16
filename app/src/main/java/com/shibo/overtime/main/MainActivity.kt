@@ -9,10 +9,11 @@ import android.widget.ImageView
 import com.google.android.material.tabs.TabLayout
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseActivity
+import com.shibo.overtime.base.ShowLoadingListener
 import com.shibo.overtime.main.adapter.FragmentAdapter
 import com.shibo.overtime.widget.CustomerViewPager
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), ShowLoadingListener {
 
     companion object{
 
@@ -56,7 +57,7 @@ class MainActivity : BaseActivity() {
         lp?.width = ViewGroup.LayoutParams.MATCH_PARENT
         mTab?.getChildAt(0)?.layoutParams = lp;
         mTab?.setupWithViewPager(mViewPager)
-        mAdapter = FragmentAdapter(supportFragmentManager)
+        mAdapter = FragmentAdapter(supportFragmentManager, this)
         mViewPager?.adapter = mAdapter
         mViewPager?.setCurrentItem(0,false)
         setCustomIcon()
@@ -115,6 +116,10 @@ class MainActivity : BaseActivity() {
             imageView.setImageResource(tabSelected[position])
         }
         return tabView;
+    }
+
+    override fun showLoadings(show: Boolean) {
+        showLoading(show)
     }
 
 }

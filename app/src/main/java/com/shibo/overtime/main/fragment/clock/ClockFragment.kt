@@ -14,13 +14,15 @@ import android.widget.TextView
 import android.widget.Toast
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseFragment
+import com.shibo.overtime.base.ShowLoadingListener
 import com.shibo.overtime.main.fragment.clock.model.entity.ClockStatusEntity
 import com.shibo.overtime.main.fragment.clock.presenter.ClockPresenter
 import com.shibo.overtime.main.fragment.clock.view.ClockView
 import com.shibo.overtime.tool.SharedPreferencesUtil
+import com.shibo.overtime.widget.MyToast
 import com.shibo.overtime.widget.SureAndCancelDialog
 
-class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListener {
+class ClockFragment: BaseFragment, ClockView, SureAndCancelDialog.DialogListener {
 
     var mPresenter: ClockPresenter? = null
 
@@ -59,6 +61,8 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
      */
     private var mTvBtnClock: TextView? = null
 
+    constructor(listener: ShowLoadingListener):super(listener)
+
     override fun getContentView(): Int {
         return R.layout.fragment_clock
     }
@@ -83,6 +87,10 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
 
         // 点击开始加班或者结束加班
         mTvBtnClock?.setOnClickListener {
+//            if(TextUtils.isEmpty(mTvReason?.text)){
+//                MyToast.showToast(activity as Context, "请输入加班理由")
+//                return@setOnClickListener
+//            }
             showDialog(mTvBtnClock?.tag.toString(), mTvReason?.text.toString())
         }
 
@@ -121,7 +129,7 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
         } else {
             timeStrInfo(mTvTimeShow?.tag as Long)
         }
-        SureAndCancelDialog(activity as Context, "提示", msg!!, this)
+        SureAndCancelDialog(activity as Context, "提示", msg!!, this).show(requireFragmentManager(), "Clock")
     }
 
     /**
@@ -131,6 +139,7 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
         val mUnit = SharedPreferencesUtil(activity as Context)
         val id = mUnit.getString(SharedPreferencesUtil.USER_ID, "")
         val token = mUnit.getString(SharedPreferencesUtil.USER_TOKEN, "")
+        mListener?.showLoadings(true)
         mPresenter?.requestStatus(id?:"", token?:"")
     }
 
@@ -138,6 +147,7 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
      * 接口返回加班状态成功回调
      */
     override fun clockSuccess(response: ClockStatusEntity) {
+        mListener?.showLoadings(false)
         if(response.code == 200){
             if(response.data != null){
                 setBtnChangeColor(response.data?.approver?:"")
@@ -200,11 +210,13 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
      * 接口返回加班状态失败回调
      */
     override fun clockFailure(message: String) {
+        mListener?.showLoadings(false)
 
     }
 
     override fun ok() {
         // 点击加班按钮后弹窗中的ok键
+        mPresenter?.requestGetClock(mTvBtnClock?.tag?.toString()!!, mTvReason?.text.toString())
     }
 
     /**

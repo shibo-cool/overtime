@@ -88,7 +88,7 @@ class ApprovalNoteActivity: BaseActivity(), ApprovalNoteView {
         mAdapter = ApprovalNoteAdapter(this@ApprovalNoteActivity)
         mRcv?.adapter = mAdapter
         mRcv?.layoutManager = LinearLayoutManager(this@ApprovalNoteActivity)
-        loadData()
+        showLoading(false)
     }
 
     override fun setListener() {
@@ -113,6 +113,7 @@ class ApprovalNoteActivity: BaseActivity(), ApprovalNoteView {
 
     fun loadData(){
         mPage = 0
+        showLoading(true)
         mPresenter?.requestApproval(mPage)
     }
 
@@ -130,6 +131,7 @@ class ApprovalNoteActivity: BaseActivity(), ApprovalNoteView {
     }
 
     override fun approvalNoteSuccess(response: ApprovalModelEntity) {
+        showLoading(false)
         mRltNoData?.visibility = View.GONE
         if(response.data != null && response.data?.approveList?.size != 0) {
             // 通过("1".equals(response.data?.hasNext,false))字段判断是否能加载下一页
@@ -140,6 +142,7 @@ class ApprovalNoteActivity: BaseActivity(), ApprovalNoteView {
     }
 
     override fun approvalNoteFailure(message: String) {
+        showLoading(false)
         mRltNoData?.visibility = View.VISIBLE
     }
 }

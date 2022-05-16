@@ -13,7 +13,9 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseFragment
+import com.shibo.overtime.base.ShowLoadingListener
 import com.shibo.overtime.login.model.entity.LoginEntity
+import com.shibo.overtime.main.MainActivity
 import com.shibo.overtime.main.approvalNote.ApprovalNoteActivity
 import com.shibo.overtime.main.changename.ChangeNameActivity
 import com.shibo.overtime.main.fragment.my.presenter.MyPresenter
@@ -25,7 +27,7 @@ import com.shibo.overtime.widget.MyToast
 import com.shibo.overtime.widget.SexDialog
 import java.io.ByteArrayOutputStream
 
-class MyFragment: BaseFragment(), View.OnClickListener, MyView {
+class MyFragment: BaseFragment, View.OnClickListener, MyView {
 
     companion object{
         const val REQUEST_CODE = 11
@@ -66,6 +68,8 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
 
     private var mPresenter: MyPresenter? = null
 
+    constructor(listener: ShowLoadingListener):super(listener)
+
     override fun getContentView(): Int {
         return R.layout.fragment_my
     }
@@ -86,6 +90,7 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
     override fun initData() {
         mPresenter = MyPresenter(activity as Context, this)
         mPresenter?.myInfo()
+
     }
 
     override fun setListener() {

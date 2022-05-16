@@ -21,22 +21,27 @@ class NotesPresenter: BasePresenter {
     var mContext: Context? = null
     var mView: NotesView? = null
     var lists: MutableList<BaseNotesViewHolderEntity> = ArrayList()
+    var mAdapter: NotesAdapter? = null
 
-    constructor(context: Context, view: NotesView){
+    constructor(context: Context, view: NotesView, adapter: NotesAdapter?){
         mContext = context
         mView = view
+        mAdapter = adapter
     }
 
     /**
      * 获取加班记录
      */
-    fun requestNotes(page: Int, adapter: NotesAdapter?){
+    fun requestNotes(page: Int){
 
         NotesModel(mContext!!, page, object: BaseModelListener<NotesModelEntity>{
             override fun onSuccess(response: NotesModelEntity) {
                 if(isSuccess(response)){
                     mView?.notesSuccess(response, response.data?.page?.canLoad?:0, page == 0)
                     val list = response.data?.filterData
+                    if(page == 0){
+                        lists.clear()
+                    }
                     if (list != null) {
                         for(item in list){
                             val entity = DateNotesViewHolderEntity()
@@ -59,7 +64,7 @@ class NotesPresenter: BasePresenter {
                             }
                         }
                     }
-                    adapter?.setData(lists)
+                    mAdapter?.setData(lists)
                 } else {
                     mView?.notesFailure("接口返回失败")
                 }

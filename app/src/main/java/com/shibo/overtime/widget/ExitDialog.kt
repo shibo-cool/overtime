@@ -2,6 +2,7 @@ package com.shibo.overtime.widget
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.shibo.overtime.R
+import com.shibo.overtime.login.LoginActivity
 import com.shibo.overtime.tool.SharedPreferencesUtil
 import kotlin.system.exitProcess
 
@@ -58,10 +60,11 @@ class ExitDialog: DialogFragment(), View.OnClickListener {
             R.id.tv_exit -> {
                 mUnit?.setValue(SharedPreferencesUtil.USER_ID, "")
                 mUnit?.setValue(SharedPreferencesUtil.USER_TOKEN, "")
-
                 val am = activity?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
                 am.restartPackage(activity?.packageName)
                 exitProcess(0)
+                val intent = Intent(activity, LoginActivity::class.java)
+                activity?.startActivity(intent)
                 activity?.finish()
             }
             R.id.tv_cancel -> {}

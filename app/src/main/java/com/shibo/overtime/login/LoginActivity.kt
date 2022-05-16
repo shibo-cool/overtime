@@ -81,17 +81,19 @@ class LoginActivity : BaseActivity(), LoginView {
 
         // 点击登录按钮
         mBtnLogin?.setOnClickListener {
-
+            showLoading(true)
             mPresenter?.requestLogin(userId, psw)
 
         }
     }
 
     override fun loginSuccess(response: LoginEntity) {
+        showLoading(false)
         MainActivity.start(this@LoginActivity)
     }
 
     override fun loginFailure(message: String) {
+        showLoading(false)
         MyToast.showToast(this, message)
     }
 
