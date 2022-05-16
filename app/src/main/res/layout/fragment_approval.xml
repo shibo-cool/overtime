@@ -6,21 +6,43 @@
     android:orientation="vertical"
     android:background="#fff6f6f6" >
 
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        android:id="@+id/ll_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_50"
-        android:text="@string/approval"
-        android:background="@color/main_color"
-        android:gravity="center"
-        style="@style/text_style_16_6a3906"/>
+        android:background="@color/main_color">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/approval"
+            android:gravity="center"
+            style="@style/text_style_16_6a3906"/>
+
+        <TextView
+            android:id="@+id/tv_approval_notes"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:text="@string/approval_notes"
+            android:gravity="center"
+            style="@style/text_style_12_6a3906"/>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/rltContent"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:visibility="gone"
-        android:layout_below="@id/title">
+        android:layout_below="@id/ll_title">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
@@ -38,7 +60,7 @@
             <CheckBox
                 android:textSize="20.0dip"
                 android:textColor="#ff6a3906"
-                android:id="@+id/rbAll"
+                android:id="@+id/rb_all"
                 android:paddingLeft="6.0dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,7 +101,7 @@
         android:id="@+id/rltNoData"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/title">
+        android:layout_below="@+id/ll_title">
 
         <TextView
             android:textSize="14.0dip"

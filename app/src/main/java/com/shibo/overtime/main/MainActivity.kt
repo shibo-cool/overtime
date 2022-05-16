@@ -58,6 +58,7 @@ class MainActivity : BaseActivity() {
         mTab?.setupWithViewPager(mViewPager)
         mAdapter = FragmentAdapter(supportFragmentManager)
         mViewPager?.adapter = mAdapter
+        mViewPager?.setCurrentItem(0,false)
         setCustomIcon()
         // 禁止滑动翻页
         mViewPager?.setNoScroll(false)

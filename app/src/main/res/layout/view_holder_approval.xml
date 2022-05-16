@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="@dimen/dp_10">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_style_20_6a3906"
+        android:id="@+id/rb_name"
+        android:paddingLeft="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:button="@drawable/rb_bg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_style_14_323232"
+        android:id="@+id/tv_reason_pre"
+        android:layout_marginLeft="@dimen/dp_47"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="@string/reasons"
+        android:layout_alignTop="@+id/rb_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_style_14_323232"
+        android:id="@+id/tv_reason"
+        android:layout_marginLeft="@dimen/dp_47"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_below="@+id/tv_reason_pre"
+        android:lineSpacingExtra="@dimen/dp_10"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/color_e4e4e4"
+        android:layout_below="@+id/tv_reason"/>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_style_14_999999"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/dp_47"
+        android:layout_below="@+id/line"/>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        style="@style/text_style_14_999999"
+        android:gravity="center|right"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_toRightOf="@+id/tv_date"
+        android:layout_below="@+id/line"
+        android:layout_alignParentRight="true"/>
+
+
+
+</RelativeLayout>

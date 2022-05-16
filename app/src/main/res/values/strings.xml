@@ -21,7 +21,33 @@
     <string name="notAgree">拒绝</string>
     <string name="all">全选</string>
     <string name="noApproval">没有审批的内容哦！</string>
+    <string name="approval_notes">审批记录</string>
+    <string name="reasons">加班理由:</string>
+
+    <string name="agreed">已同意</string>
+    <string name="refused">已拒绝</string>
+    <string name="no_approval_note">没有审批的内容哦！</string>
 
     <string name="my">我的</string>
+    <string name="nick_name">昵称</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="pick_photo">选择照片</string>
+    <string name="camera">拍照</string>
+    <string name="pick_photo_sd_miss">SD卡不存在！</string>
+    <string name="pick_photo_err">请先安装图库</string>
+    <string name="photo_too_small">这张照片太小，看不清您的绝世容颜</string>
+    <string name="pick_photo_data_null">照片上传不成功哦！</string>
+    <string name="confidentiality">保密</string>
+    <string name="sex_male">男</string>
+    <string name="sex_female">女</string>
+    <string name="ok">确定</string>
+    <string name="sex_choose">选择性别</string>
+    <string name="old_pwd">旧密码</string>
+    <string name="new_pwd">新密码</string>
+    <string name="pls_enter_old_pwd">请输入旧密码</string>
+    <string name="confirm_commit">确认提交</string>
+    <string name="hint_input_login_password">请设置登录密码</string>
+    <string name="exit">退出当前账号</string>
 
 </resources>

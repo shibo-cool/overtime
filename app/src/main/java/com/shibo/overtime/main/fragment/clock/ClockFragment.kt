@@ -1,6 +1,7 @@
 package com.shibo.overtime.main.fragment.clock
 
 import android.content.Context
+import android.os.Handler
 import android.os.SystemClock
 import android.text.Editable
 import android.text.TextUtils
@@ -16,6 +17,7 @@ import com.shibo.overtime.base.BaseFragment
 import com.shibo.overtime.main.fragment.clock.model.entity.ClockStatusEntity
 import com.shibo.overtime.main.fragment.clock.presenter.ClockPresenter
 import com.shibo.overtime.main.fragment.clock.view.ClockView
+import com.shibo.overtime.tool.SharedPreferencesUtil
 import com.shibo.overtime.widget.SureAndCancelDialog
 
 class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListener {
@@ -126,7 +128,10 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
      * 更新加班状态
      */
     private fun getClockRequest() {
-        mPresenter?.requestGetClock(mTvBtnClock?.tag.toString(), mTvReason?.text.toString())
+        val mUnit = SharedPreferencesUtil(activity as Context)
+        val id = mUnit.getString(SharedPreferencesUtil.USER_ID, "")
+        val token = mUnit.getString(SharedPreferencesUtil.USER_TOKEN, "")
+        mPresenter?.requestStatus(id?:"", token?:"")
     }
 
     /**
@@ -137,13 +142,13 @@ class ClockFragment: BaseFragment(), ClockView, SureAndCancelDialog.DialogListen
             if(response.data != null){
                 setBtnChangeColor(response.data?.approver?:"")
                 mTvApproval?.text = response.data?.approver?:""
-                mTvDate?.text = response.data?.date
+                mTvDate?.text = response.data?.date?:""
                 if("1".equals(response.data?.flag, false)){
                     // 未加班状态
                     mTvBtnClock?.tag = 1
                     mTvBtnClock?.text = "开始加班"
                     mTime?.stop()
-                    mTvTimeShow?.text = "00:00:00"
+//                    mTvTimeShow?.text = "00:00:00"
                     mTvReason?.isEnabled = true
                     mTvReason?.setText("")
                 } else {

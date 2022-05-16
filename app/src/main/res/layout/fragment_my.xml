@@ -12,8 +12,7 @@
         android:gravity="center"
         style="@style/text_style_16_6a3906"/>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fafafa"
@@ -28,10 +27,10 @@
 
             <ImageView
                 android:id="@+id/iv_head"
-                android:layout_width="60dip"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/dp_16"
                 android:contentDescription="@null"
                 android:src="@mipmap/icon_xiaotian"/>
 
@@ -41,7 +40,7 @@
                 style="@style/text_style_14_323232"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_8" />
 
         </LinearLayout>
@@ -58,7 +57,7 @@
             <RelativeLayout
                 android:id="@+id/rlt_nick_name"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="@dimen/dp_45"
                 android:background="#FFFFFFFF"
                 android:paddingLeft="@dimen/dp_14"
                 android:paddingRight="@dimen/dp_14">
@@ -72,7 +71,7 @@
                     android:layout_centerVertical="true"
                     android:drawableLeft="@mipmap/iconl_nickname"
                     android:drawablePadding="@dimen/dp_14"
-                    android:text="昵称" />
+                    android:text="@string/nick_name" />
 
 
                 <TextView
@@ -85,21 +84,20 @@
                     android:layout_toRightOf="@+id/pre_tv_nick_name"
                     android:drawableRight="@mipmap/icon_extension"
                     android:gravity="right"
-                    android:textColor="#747474"
-                    android:textSize="13sp" />
+                    style="@style/text_style_13_747474" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginLeft="48dp"
+                android:layout_marginLeft="@dimen/dp_48"
                 android:background="@color/color_dadada" />
 
 
             <RelativeLayout
                 android:id="@+id/rlt_sex"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="@dimen/dp_45"
                 android:background="#FFFFFFFF"
                 android:paddingLeft="@dimen/dp_14"
                 android:paddingRight="@dimen/dp_14">
@@ -127,22 +125,21 @@
                     android:drawableRight="@mipmap/icon_extension"
                     android:gravity="right"
                     android:text="保密"
-                    android:textColor="#747474"
-                    android:textSize="13sp" />
+                    style="@style/text_style_13_747474" />
             </RelativeLayout>
 
             <View
 
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginLeft="48dp"
+                android:layout_marginLeft="@dimen/dp_48"
                 android:background="@color/color_dadada" />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="#FFFFFFFF"
+                android:layout_height="@dimen/dp_45"
+                android:background="@color/white"
                 android:paddingLeft="@dimen/dp_14"
                 android:paddingRight="@dimen/dp_14">
 
@@ -166,22 +163,21 @@
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_toRightOf="@+id/pre_tv_account"
                     android:gravity="right"
-                    android:textColor="#747474"
-                    android:textSize="13sp" />
+                    style="@style/text_style_13_747474" />
 
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginLeft="48dp"
+                android:layout_marginLeft="@dimen/dp_48"
                 android:background="@color/color_dadada" />
 
             <RelativeLayout
                 android:id="@+id/rlt_set_pwd"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="#FFFFFFFF"
+                android:layout_height="@dimen/dp_45"
+                android:background="@color/white"
                 android:paddingLeft="@dimen/dp_14"
                 android:paddingRight="@dimen/dp_14">
 
@@ -203,8 +199,7 @@
                     android:layout_marginLeft="@dimen/dp_12"
                     android:drawableRight="@mipmap/icon_extension"
                     android:gravity="right"
-                    android:textColor="#747474"
-                    android:textSize="13sp" />
+                    style="@style/text_style_13_747474" />
 
             </RelativeLayout>
 
@@ -218,7 +213,7 @@
         <RelativeLayout
             android:id="@+id/rlt_approval_record"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/dp_45"
             android:background="#FFFFFFFF"
             android:paddingLeft="@dimen/dp_14"
             android:paddingRight="@dimen/dp_14">
@@ -231,7 +226,6 @@
                 android:layout_centerVertical="true"
                 android:drawablePadding="@dimen/dp_14"
                 android:text="审批记录" />
-<!--            android:drawableLeft="@mipmap/icon_approval"-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -241,8 +235,7 @@
                 android:layout_marginLeft="@dimen/dp_12"
                 android:drawableRight="@mipmap/icon_extension"
                 android:gravity="right"
-                android:textColor="#747474"
-                android:textSize="13sp" />
+                style="@style/text_style_13_747474" />
 
         </RelativeLayout>
 
@@ -250,7 +243,7 @@
             android:id="@+id/tv_exit_login"
             style="@style/text_style_14_323232"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/dp_45"
             android:layout_marginTop="@dimen/dp_14"
             android:background="#FFFFFF"
             android:gravity="center"

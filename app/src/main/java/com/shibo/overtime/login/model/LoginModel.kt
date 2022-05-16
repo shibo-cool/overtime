@@ -16,8 +16,8 @@ class LoginModel: BaseModel<LoginEntity> {
 
     constructor(context: Context, id: String, psw: String, listener: BaseModelListener<LoginEntity>) : super(context){
         setListener(listener)
-        addParam("id", id)
-        addParam("psw", psw)
+        addParam("staffNum", id)
+        addParam("password", psw)
     }
 
     override fun getUrl(): String {

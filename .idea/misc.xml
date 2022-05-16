@@ -11,16 +11,28 @@
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_oval_oval.xml" value="0.112" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_white.xml" value="0.112" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/btn_yellow.xml" value="0.112" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/button_red_selector.xml" value="0.1035" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/drawable/rb_bg.xml" value="0.1155" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_approval_note.xml" value="0.10866261398176291" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_change_name.xml" value="0.1" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_launcher.xml" value="0.11" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_main.xml" value="0.13632246376811594" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/activity_set_password.xml" value="0.13768115942028986" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/dialog_exit.xml" value="0.13768115942028986" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/dialog_sex.xml" value="0.13768115942028986" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/dialog_sure_and_cancle.xml" value="0.1286231884057971" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_approval.xml" value="0.13632246376811594" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_clock.xml" value="0.165" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_dialog_take_photo.xml" value="0.25" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_my.xml" value="0.25" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/fragment_notes.xml" value="0.13632246376811594" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/line_grey.xml" value="0.13768115942028986" />
         <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/tab_main.xml" value="0.1" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/view_holder_approval.xml" value="0.25" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/view_holder_approval_note.xml" value="0.25" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/viewholder_notes_clock.xml" value="0.335" />
+        <entry key="..\:/as_workspace/over-time/overtime/app/src/main/res/layout/viewholder_notes_date.xml" value="0.25" />
       </map>
     </option>
   </component>

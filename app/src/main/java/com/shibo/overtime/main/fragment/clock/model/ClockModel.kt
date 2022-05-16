@@ -14,7 +14,7 @@ import com.shibo.overtime.main.fragment.clock.model.entity.ClockStatusEntity
 class ClockModel: BaseModel<ClockStatusEntity> {
 
     constructor(context: Context, flag: String, reason: String, listener: BaseModelListener<ClockStatusEntity>) :super(context) {
-        setListener(listener);
+        setListener(listener)
         addParam("flag", flag)
         addParam("reason", reason)
     }

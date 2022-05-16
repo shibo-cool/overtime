@@ -15,8 +15,8 @@ class ClockStatusModel: BaseModel<ClockStatusEntity> {
 
     constructor(context: Context ,id: String, token: String, listener: BaseModelListener<ClockStatusEntity>) : super(context){
         setListener(listener);
-        addParam("id", id)
-        addParam("token", token)
+        addHeader("id", id)
+        addHeader("accesstoken", token)
     }
 
     override fun getUrl(): String {

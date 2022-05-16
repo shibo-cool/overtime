@@ -33,5 +33,25 @@ class LoginEntity: BaseEntity() {
      * 工号
      */
     var staffNum: String? = null
+
+    /**
+     * 真实姓名
+     */
+    var realname: String? = null
+
+    /**
+     * 头像
+     */
+    var photo: String? = null
+
+    /**
+     * 性别
+     */
+    var gender: String? = null
+
+    /**
+     * 昵称
+     */
+    var nickname: String? = null
   }
 }

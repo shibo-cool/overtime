@@ -2,14 +2,18 @@ package com.shibo.overtime.login
 
 import android.content.Context
 import android.content.Intent
+import android.os.Looper
+import android.text.TextUtils
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.shibo.overtime.R
 import com.shibo.overtime.base.BaseActivity
 import com.shibo.overtime.login.model.entity.LoginEntity
 import com.shibo.overtime.login.presenter.LoginPresenter
 import com.shibo.overtime.login.view.LoginView
 import com.shibo.overtime.main.MainActivity
+import com.shibo.overtime.widget.MyToast
 
 /**
  * 登录页
@@ -68,10 +72,17 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun setListener() {
 
+        val userId: String = mEtUser?.text.toString()
+        val psw: String = mEtPassword?.text.toString()
+        if(TextUtils.isEmpty(userId) || TextUtils.isEmpty(psw)){
+            MyToast.showToast(this, "用户名或密码不能为空")
+            return
+        }
+
         // 点击登录按钮
         mBtnLogin?.setOnClickListener {
 
-            mPresenter?.requestLogin(mEtUser?.text.toString(), mEtPassword?.text.toString())
+            mPresenter?.requestLogin(userId, psw)
 
         }
     }
@@ -81,7 +92,7 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loginFailure(message: String) {
-
+        MyToast.showToast(this, message)
     }
 
 

@@ -3,6 +3,8 @@ package com.shibo.overtime.base
 import android.content.Context
 import android.net.ConnectivityManager
 import com.google.gson.Gson
+import com.shibo.overtime.main.MainActivity
+import com.shibo.overtime.tool.SharedPreferencesUtil
 import okhttp3.*
 import java.io.IOException
 
@@ -20,16 +22,15 @@ abstract class BaseModel<T: BaseEntity> {
 
     private var okHttpClient = OkHttpClient.getInstance()
 
+    private val request = Request.Builder()
+
     /**
      * 创建表单请求参数
      */
     private var builder: FormBody.Builder? = FormBody.Builder()
 
-    private var body: FormBody? = builder?.build()
-
     constructor(context: Context){
         mContext = context
-
     }
 
     open fun setListener(listener: BaseModelListener<T>) {
@@ -57,24 +58,47 @@ abstract class BaseModel<T: BaseEntity> {
     }
 
     /**
+     * 添加请求头
+     */
+    open fun addHeader(key: String?, value: String?){
+        request.addHeader(key?:"", value?:"")
+    }
+
+    /**
+     * 带id请求头的请求
+     */
+    open fun setHeader(context: Context){
+        val mUnit = SharedPreferencesUtil(context)
+        val id = mUnit.getString(SharedPreferencesUtil.USER_ID, "")
+        val token = mUnit.getString(SharedPreferencesUtil.USER_TOKEN, "")
+        addHeader("id", id)
+        addHeader("accesstoken", token)
+    }
+
+    /**
      * 开启新线程请求接口
      */
     fun start(){
-        val request = Request.Builder()
-            .url(getAddress() + getUrl())
-            .post(body)
+        val requests = request.url(getAddress() + getUrl())
+            .post(builder?.build())
             .build()
-        okHttpClient?.newCall(request)?.enqueue(object : Callback {
+        okHttpClient?.newCall(requests)?.enqueue(object : Callback {
             override fun onFailure(p0: Call, p1: IOException) {
-                mListener?.onFailure("接口请求失败")
+                (mContext as MainActivity).runOnUiThread(object: Runnable {
+                    override fun run() {
+                        mListener?.onFailure("接口请求失败")
+                    }
+                })
             }
 
             override fun onResponse(p0: Call, p1: Response) {
-//                val entity = createInstance(getClazz())
                 val entity: T? = jsonToBean(p1.body()!!, getClazz())
                 if (entity != null) {
-//                    entity = JSON.parseObject(p1.body()?.string())
-                    mListener?.onSuccess(entity)
+                    (mContext as MainActivity).runOnUiThread(object: Runnable{
+                        override fun run() {
+                            mListener?.onSuccess(entity)
+                        }
+                    })
                 }
             }
 

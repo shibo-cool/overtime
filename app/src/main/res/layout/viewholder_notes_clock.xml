@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fafafa">
+
+    <RelativeLayout
+        android:id="@+id/layout_details"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#fafafa">
+        <TextView
+            style="@style/text_style_20_fe473c"
+            android:id="@+id/tv_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="08日"/>
+
+        <TextView
+            style="@style/text_style_10_323232"
+            android:id="@+id/tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_day"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:text="4月"/>
+
+        <TextView
+            android:textSize="10dp"
+            android:id="@+id/tv_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_day"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_below="@+id/tv_month"
+            android:text="周一"
+            />
+
+
+        <TextView
+            style="@style/text_style_10_999999"
+            android:id="@+id/tv_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="14:00-18:00"
+            android:layout_toRightOf="@+id/tv_week"
+            android:layout_centerInParent="true"
+            />
+
+        <ImageView
+            style="@style/text_style_10_999999"
+            android:id="@+id/img_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_toRightOf="@+id/tv_range"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_checkpending"
+            />
+
+        <TextView
+            style="@style/text_style_14_fe473c"
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_toLeftOf="@+id/details"
+            android:text="2时45分"/>
+
+        <ImageView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_open"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_dadada"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/reason_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#fafafa">
+
+            <TextView
+                android:id="@+id/tv_reason"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/reason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#999999"/>
+
+            <TextView
+                android:id="@+id/tv_reason_editor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_reason"
+                android:textColor="#999999"
+                android:textSize="14dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="哈哈哈 加班啦"
+                android:layout_marginLeft="@dimen/dp_16" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

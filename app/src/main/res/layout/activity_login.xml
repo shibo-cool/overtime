@@ -57,6 +57,7 @@
         android:background="@drawable/btn_main_cornor_4"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="@string/login"/>
+        android:text="@string/login"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

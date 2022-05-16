@@ -35,7 +35,7 @@ class ClockPresenter: BasePresenter {
                 mView?.clockFailure(message)
             }
 
-        })
+        }).start()
     }
 
     /**

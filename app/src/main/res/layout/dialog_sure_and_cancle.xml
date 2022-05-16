@@ -28,7 +28,6 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="@dimen/dp_16"/>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,8 +46,6 @@
             android:textColor="@color/color_6a3906"
             android:text="取消"/>
 
-
-
         <Button
             android:id="@+id/btn_sure"
             android:layout_width="90dp"
@@ -57,12 +54,7 @@
             android:layout_marginRight="@dimen/dp_12"
             android:background="@drawable/btn_yellow"
             android:text="确定"
-            android:textColor="@color/color_6a3906"
-            />
-
-
-
-
+            android:textColor="@color/color_6a3906" />
 
     </LinearLayout>
 
