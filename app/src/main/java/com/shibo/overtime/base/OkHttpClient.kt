@@ -9,15 +9,15 @@ import okhttp3.OkHttpClient
  */
 class OkHttpClient {
 
-  companion object{
+    companion object{
 
-    private var okHttpClient: OkHttpClient? = null
+        private var okHttpClient: OkHttpClient? = null
 
-    fun getInstance(): OkHttpClient? {
-      if(okHttpClient == null){
-        okHttpClient = OkHttpClient()
-      }
-      return okHttpClient
+        fun getInstance(): OkHttpClient? {
+            if(okHttpClient == null){
+                okHttpClient = OkHttpClient()
+            }
+            return okHttpClient
+        }
     }
   }
-}

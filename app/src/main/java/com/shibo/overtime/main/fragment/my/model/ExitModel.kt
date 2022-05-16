@@ -11,7 +11,7 @@ import com.shibo.overtime.login.model.entity.LoginEntity
  * @date 2022/5/15
  *
  */
-class MyModel: BaseModel<LoginEntity> {
+class ExitModel: BaseModel<LoginEntity> {
 
     constructor(context: Context, photo: String, nickname: String, gender: Int, listener: BaseModelListener<LoginEntity>):super(context){
         setHeader(context)

@@ -4,11 +4,11 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
 import com.shibo.overtime.R
 import com.shibo.overtime.tool.SharedPreferencesUtil
 import kotlin.system.exitProcess
@@ -32,10 +32,10 @@ class ExitDialog: DialogFragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_FRAME, R.style.fragment_dialog_style)
-        mUnit = SharedPreferencesUtil(activity)
+        mUnit = SharedPreferencesUtil(requireActivity())
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = LayoutInflater.from(activity).inflate(R.layout.dialog_exit, null)
         initView()
         setListener()
@@ -59,10 +59,10 @@ class ExitDialog: DialogFragment(), View.OnClickListener {
                 mUnit?.setValue(SharedPreferencesUtil.USER_ID, "")
                 mUnit?.setValue(SharedPreferencesUtil.USER_TOKEN, "")
 
-                val am = activity.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-                am.restartPackage(activity.packageName)
+                val am = activity?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+                am.restartPackage(activity?.packageName)
                 exitProcess(0)
-                activity.finish()
+                activity?.finish()
             }
             R.id.tv_cancel -> {}
         }

@@ -85,16 +85,16 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
 
     override fun initData() {
         mPresenter = MyPresenter(activity as Context, this)
+        mPresenter?.myInfo()
+    }
+
+    override fun setListener() {
         mHead?.setOnClickListener(this)
         nRltNickName?.setOnClickListener(this)
         nRltSex?.setOnClickListener(this)
         nRltSetPwd?.setOnClickListener(this)
         nRltApprovalRecord?.setOnClickListener(this)
         mTvExitLogin?.setOnClickListener(this)
-    }
-
-    override fun setListener() {
-
     }
 
     override fun onClick(p0: View?) {
@@ -128,7 +128,7 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
                         sexDialog.dismiss()
                     }
                 })
-                sexDialog.show(fragmentManager as FragmentManager, "Sex")
+                sexDialog.show(requireFragmentManager(), "Sex")
             }
             nRltSetPwd -> {
                 val intentPwd = Intent(activity, SetPasswordActivity::class.java)
@@ -139,7 +139,7 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
             }
             mTvExitLogin -> {
                 val exitDialog = ExitDialog()
-                exitDialog.show(fragmentManager as FragmentManager, "EXIT")
+                exitDialog.show(requireFragmentManager(), "EXIT")
             }
         }
     }
@@ -169,9 +169,9 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
         val nickname: String = mTvNickName?.text.toString()
         val gender: Int = if (mTvSex?.tag == null) {
             1
-        } else ({
-            mTvSex?.tag
-        }) as Int
+        } else {
+            mTvSex?.tag as Int
+        }
         var photo = ""
         if (mBitmap != null) photo = convertIconToString(mBitmap!!)
         mPresenter?.edit(photo, nickname, gender)
@@ -183,14 +183,14 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
      * @return
      */
     private fun convertIconToString(bitmap: Bitmap): String {
-        val baos = ByteArrayOutputStream() // outputstream
+        val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 75, baos)
         val appicon = baos.toByteArray() // 转为byte数组
         return Base64.encodeToString(appicon, Base64.DEFAULT)
     }
 
-    fun setData(entity: LoginEntity) {
-        Glide.with(mHead).load(entity.data?.photo)
+    private fun setData(entity: LoginEntity) {
+//        Glide.with(activity as Context).load(entity.data?.photo).into(mHead)
         mTvDepartment?.text = entity.data?.realname
         mTvAccount?.text = entity.data?.id
         if ("0".equals(entity.data?.gender, false)) {
@@ -211,6 +211,14 @@ class MyFragment: BaseFragment(), View.OnClickListener, MyView {
             }
         }
         mTvNickName?.text = entity.data?.nickname
+    }
+
+    override fun infoSuccess(entity: LoginEntity) {
+        setData(entity)
+    }
+
+    override fun infoFailure(message: String) {
+        MyToast.showToast(activity as Context, message)
     }
 
     override fun editSuccess(response: LoginEntity) {

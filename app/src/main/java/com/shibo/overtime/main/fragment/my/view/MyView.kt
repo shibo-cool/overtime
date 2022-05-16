@@ -9,6 +9,9 @@ import com.shibo.overtime.login.model.entity.LoginEntity
  */
 interface MyView {
 
+    fun infoSuccess(entity: LoginEntity)
+    fun infoFailure(message: String)
+
     fun editSuccess(response: LoginEntity)
     fun editFailure(message: String)
 }
