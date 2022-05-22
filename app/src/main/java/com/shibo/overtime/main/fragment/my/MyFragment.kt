@@ -155,7 +155,6 @@ class MyFragment: BaseFragment, View.OnClickListener, MyView {
     private fun selectPhone(iv: ImageView){
         val dialog = FragmentPhoneDialog()
         dialog.setPhoneSize(300,300)
-        dialog.isShowDel(false)
         dialog.setResultSuccess(object: FragmentPhoneDialog.ResultSuccess{
             override fun success(bitmap: Bitmap?) {
                 if (null != bitmap) {
@@ -168,6 +167,7 @@ class MyFragment: BaseFragment, View.OnClickListener, MyView {
             }
 
         })
+//        dialog.show(childFragmentManager, "Photo")
     }
 
     fun edit() {

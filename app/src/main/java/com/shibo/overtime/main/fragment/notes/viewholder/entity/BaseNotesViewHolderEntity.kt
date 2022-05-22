@@ -15,4 +15,6 @@ open class BaseNotesViewHolderEntity: Serializable {
     }
 
     open var type = NOTES_VIEW_HOLDER_DATE
+
+    open var hasNext: Boolean = false
 }

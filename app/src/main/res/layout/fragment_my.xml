@@ -83,6 +83,7 @@
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_toRightOf="@+id/pre_tv_nick_name"
                     android:drawableRight="@mipmap/icon_extension"
+                    android:drawablePadding="@dimen/dp_5"
                     android:gravity="right"
                     style="@style/text_style_13_747474" />
             </RelativeLayout>
@@ -123,6 +124,7 @@
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_toRightOf="@+id/pre_tv_sex"
                     android:drawableRight="@mipmap/icon_extension"
+                    android:drawablePadding="@dimen/dp_5"
                     android:gravity="right"
                     android:text="保密"
                     style="@style/text_style_13_747474" />
@@ -198,6 +200,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:drawableRight="@mipmap/icon_extension"
+                    android:drawablePadding="@dimen/dp_5"
                     android:gravity="right"
                     style="@style/text_style_13_747474" />
 
@@ -234,6 +237,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/dp_12"
                 android:drawableRight="@mipmap/icon_extension"
+                android:drawablePadding="@dimen/dp_5"
                 android:gravity="right"
                 style="@style/text_style_13_747474" />
 

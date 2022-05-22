@@ -5,6 +5,7 @@ import android.widget.TextView
 import com.shibo.overtime.R
 import com.shibo.overtime.main.fragment.notes.viewholder.entity.BaseNotesViewHolderEntity
 import com.shibo.overtime.main.fragment.notes.viewholder.entity.DateNotesViewHolderEntity
+import com.shibo.overtime.main.listener.OnLoadMoreListener
 
 /**
  * @author shibo
@@ -28,7 +29,7 @@ class NotesDataViewHolder: BaseNotesViewHolder {
         mTitle = itemView.findViewById(R.id.tv_title)
     }
 
-    override fun updateData(entity: BaseNotesViewHolderEntity){
+    override fun updateData(entity: BaseNotesViewHolderEntity, loadState: Int, listener: OnLoadMoreListener){
         val title = (entity as DateNotesViewHolderEntity).date
         mTitle?.text = title
     }

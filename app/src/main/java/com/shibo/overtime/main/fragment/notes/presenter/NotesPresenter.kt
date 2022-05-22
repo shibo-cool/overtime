@@ -61,6 +61,10 @@ class NotesPresenter: BasePresenter {
                                     clock.isOpen = note.isOpen
                                     lists.add(clock)
                                 }
+                                val more = ClockNotesViewHolderEntity()
+                                more.type = 10086
+                                more.hasNext = response.data?.page?.canLoad == 1
+                                lists.add(more)
                             }
                         }
                     }

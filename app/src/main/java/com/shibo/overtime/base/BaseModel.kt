@@ -84,7 +84,7 @@ abstract class BaseModel<T: BaseEntity> {
             .build()
         okHttpClient?.newCall(requests)?.enqueue(object : Callback {
             override fun onFailure(p0: Call, p1: IOException) {
-                (mContext as MainActivity).runOnUiThread(object: Runnable {
+                (mContext as BaseActivity).runOnUiThread(object: Runnable {
                     override fun run() {
                         mListener?.onFailure("接口请求失败")
                     }
@@ -94,7 +94,7 @@ abstract class BaseModel<T: BaseEntity> {
             override fun onResponse(p0: Call, p1: Response) {
                 val entity: T? = jsonToBean(p1.body()!!, getClazz())
                 if (entity != null) {
-                    (mContext as MainActivity).runOnUiThread(object: Runnable{
+                    (mContext as BaseActivity).runOnUiThread(object: Runnable{
                         override fun run() {
                             mListener?.onSuccess(entity)
                         }

@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.shibo.overtime.R
 import com.shibo.overtime.main.fragment.notes.viewholder.entity.BaseNotesViewHolderEntity
 import com.shibo.overtime.main.fragment.notes.viewholder.entity.ClockNotesViewHolderEntity
+import com.shibo.overtime.main.listener.OnLoadMoreListener
 
 /**
  * @author shibo
@@ -87,7 +88,7 @@ class NotesClockViewHolder: BaseNotesViewHolder {
         mReason = itemView.findViewById(R.id.tv_reason_editor)
     }
 
-    override fun updateData(entity: BaseNotesViewHolderEntity){
+    override fun updateData(entity: BaseNotesViewHolderEntity, loadState: Int, listener: OnLoadMoreListener){
         val entities = entity as ClockNotesViewHolderEntity
         mDay?.text = entities.day
         mMonth?.text = entities.month

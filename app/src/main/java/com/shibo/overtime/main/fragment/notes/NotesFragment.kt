@@ -13,6 +13,7 @@ import com.shibo.overtime.main.fragment.notes.adapter.NotesAdapter
 import com.shibo.overtime.main.fragment.notes.model.entity.NotesModelEntity
 import com.shibo.overtime.main.fragment.notes.presenter.NotesPresenter
 import com.shibo.overtime.main.fragment.notes.view.NotesView
+import com.shibo.overtime.main.listener.OnLoadMoreListener
 import com.shibo.overtime.widget.MyToast
 
 /**
@@ -20,7 +21,7 @@ import com.shibo.overtime.widget.MyToast
  * @date 2022/5/10
  * 加班记录页
  */
-class NotesFragment: BaseFragment, NotesView {
+class NotesFragment: BaseFragment, NotesView, OnLoadMoreListener {
 
     /**
      * 剩余时间（时）
@@ -76,7 +77,7 @@ class NotesFragment: BaseFragment, NotesView {
     }
 
     override fun initData() {
-        mAdapter = NotesAdapter(activity as Context)
+        mAdapter = NotesAdapter(activity as Context,this)
         mRvNotes?.layoutManager = LinearLayoutManager(activity as Context)
         mRvNotes?.adapter = mAdapter
         mPresenter = NotesPresenter(activity as Context, this, mAdapter)
@@ -109,5 +110,10 @@ class NotesFragment: BaseFragment, NotesView {
      */
     override fun notesFailure(message: String) {
         MyToast.showToast(activity as Context, message)
+    }
+
+    override fun loadMore() {
+        mPage++
+        mPresenter?.requestNotes(mPage)
     }
 }

@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shibo.overtime.main.fragment.notes.viewholder.BaseNotesViewHolder
+import com.shibo.overtime.main.fragment.notes.viewholder.FootViewHolder
 import com.shibo.overtime.main.fragment.notes.viewholder.NotesClockViewHolder
 import com.shibo.overtime.main.fragment.notes.viewholder.NotesDataViewHolder
 import com.shibo.overtime.main.fragment.notes.viewholder.entity.BaseNotesViewHolderEntity
+import com.shibo.overtime.main.listener.OnLoadMoreListener
 
 /**
  * @author shibo
@@ -19,6 +21,8 @@ class NotesAdapter: RecyclerView.Adapter<BaseNotesViewHolder> {
     var mContext: Context? = null
     var mList: MutableList<BaseNotesViewHolderEntity> = ArrayList()
     var mLayoutInflater: LayoutInflater? = null
+    var mLoadState: Int? = 1
+    var mListener: OnLoadMoreListener? = null
 
     fun setData(data: List<BaseNotesViewHolderEntity>){
         mList.clear()
@@ -26,13 +30,15 @@ class NotesAdapter: RecyclerView.Adapter<BaseNotesViewHolder> {
         notifyDataSetChanged()
     }
 
-    constructor(context: Context) : super(){
+    constructor(context: Context, listener: OnLoadMoreListener) : super(){
         mContext = context
+        mListener = listener
         mLayoutInflater = LayoutInflater.from(context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseNotesViewHolder {
         return when(viewType){
+            10086 -> FootViewHolder(mLayoutInflater?.inflate(FootViewHolder.getContentView(), parent, false))
             BaseNotesViewHolderEntity.NOTES_VIEW_HOLDER_DATE -> {
                 NotesDataViewHolder(mLayoutInflater?.inflate(NotesDataViewHolder.getContentView(), parent, false))
             }
@@ -46,7 +52,7 @@ class NotesAdapter: RecyclerView.Adapter<BaseNotesViewHolder> {
     }
 
     override fun onBindViewHolder(holder: BaseNotesViewHolder, position: Int) {
-        holder.updateData(mList[position])
+        holder.updateData(mList[position], mLoadState?:1, mListener!!)
     }
 
     override fun getItemCount(): Int {

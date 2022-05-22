@@ -15,9 +15,11 @@ class MyToast {
 
         fun showToast(context: Context, message: String){
 
-          Looper.prepare()
-          Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-          Looper.loop()
+            if(Looper.myLooper() == null) {
+                Looper.prepare()
+            }
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            Looper.loop()
         }
     }
 }

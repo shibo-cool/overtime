@@ -57,8 +57,6 @@ class LoginActivity : BaseActivity(), LoginView {
         mEtUser = findViewById(R.id.et_user)
         mEtPassword = findViewById(R.id.et_password)
         mBtnLogin = findViewById(R.id.btn_login)
-        mEtUser?.setText("129871")
-        mEtPassword?.setText("123456")
 
     }
 
@@ -72,15 +70,13 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun setListener() {
 
-        val userId: String = mEtUser?.text.toString()
-        val psw: String = mEtPassword?.text.toString()
-        if(TextUtils.isEmpty(userId) || TextUtils.isEmpty(psw)){
-            MyToast.showToast(this, "用户名或密码不能为空")
-            return
-        }
-
         // 点击登录按钮
-        mBtnLogin?.setOnClickListener {
+        mBtnLogin?.setOnClickListener {val userId: String = mEtUser?.text.toString()
+            val psw: String = mEtPassword?.text.toString()
+            if(TextUtils.isEmpty(userId) || TextUtils.isEmpty(psw)){
+                MyToast.showToast(this, "用户名或密码不能为空")
+                return@setOnClickListener
+            }
             showLoading(true)
             mPresenter?.requestLogin(userId, psw)
 
@@ -90,6 +86,7 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun loginSuccess(response: LoginEntity) {
         showLoading(false)
         MainActivity.start(this@LoginActivity)
+        finish()
     }
 
     override fun loginFailure(message: String) {
